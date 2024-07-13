@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+        .time {
+            width: 100vw;
+            font-size: 200px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .date {
+            width: 100vw;
+            font-size: 50px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            setDateTime();
+            setInterval(function () {
+                setDateTime();
+            }, 1000)
+        }
+        function setDateTime() {
+            let now = new Date();
+            let nowStr = new Date().toLocaleString();
+            let nowStrSplit = nowStr.split(" ");
+            let dayStrArray = ['日', '一', '二', '三', '四', '五', '六'];
+            let nowDate = nowStrSplit[0] + ' 星期' + dayStrArray[now.getDay()];
+            let nowTime = nowStrSplit[1];
+            document.getElementById("time").innerHTML = nowTime.split(":")[0] + ":" + nowTime.split(":")[1];
+            document.getElementById("date").innerHTML = nowDate;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="time" class="time"></div>
+    <div id="date" class="date"></div>
+</body>
+
+</html>
